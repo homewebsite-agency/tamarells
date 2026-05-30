@@ -1,719 +1,401 @@
+```html
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Tamarells | Marisquería en Port de Pollença</title>
-<meta name="description" content="Tamarells, marisquería junto a la playa en Port de Pollença. Playa, sabor y atmósfera perfecta. Especialidades de mar, paella y marisco fresco.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-<style>
-:root{
-  --bg:#060d14;
-  --bg-2:#0a1119;
-  --bg-3:#0d1220;
-  --accent:#2a6fa8;
-  --accent-light:#3d8fd4;
-  --cream:#f5f1ed;
-  --cream-2:#e8e4df;
-  --line:rgba(255,255,255,0.08);
-  --gold:#c9a84c;
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tamarells — Restaurante en Port de Pollença, Mallorca</title>
+  <meta name="description" content="Tamarells, restaurante en Port de Pollença. Una experiencia única frente al mar con cocina mediterránea tradicional. Producto fresco y recetas de siempre.">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,600;1,400;1,600&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+:root{--bg:#0E0B09;--bg2:#15110E;--bg3:#1E1813;--ac:#C49A5B;--tx:#F2EBDA;--tx2:#8B7E68;--wh:#fff;}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--tx);}
+nav{position:fixed;top:0;width:100%;z-index:100;padding:20px 60px;display:flex;align-items:center;justify-content:space-between;background:transparent;transition:all .4s;}
+nav.scrolled{background:#0E0B09f5;backdrop-filter:blur(12px);box-shadow:0 1px 0 rgba(0,0,0,.1);padding:14px 60px;}
+.nav-logo{font-family:'Fraunces',serif;font-size:1.5rem;font-weight:600;color:var(--wh);text-decoration:none;letter-spacing:2px;transition:color .4s;}
+nav.scrolled .nav-logo{color:var(--tx);}
+.nav-links{display:flex;gap:32px;list-style:none;}
+.nav-links a{color:rgba(255,255,255,.85);text-decoration:none;font-size:.78rem;letter-spacing:2px;text-transform:uppercase;transition:color .3s;}
+nav.scrolled .nav-links a{color:var(--tx2);}
+.nav-links a:hover,nav.scrolled .nav-links a:hover{color:var(--ac);}
+.nav-cta{background:var(--ac);color:var(--wh);padding:10px 24px;font-size:.75rem;letter-spacing:2px;text-transform:uppercase;text-decoration:none;border-radius:2px;transition:background .3s;}
+.nav-cta:hover{opacity:.85;}
+.hero{height:100svh;position:relative;display:flex;align-items:center;justify-content:center;text-align:center;overflow:hidden;}
+.hero-bg{position:absolute;inset:0;background-image:url('https://maps.googleapis.com/maps/api/place/photo?maxwidth=1200&photoreference=Ab43m-vPQl_jklih2E7XRRjz6O4f1Gdj3julWICMXjoeL1w5b-NQlJA00xq6xsgX6bDrkSp59QcL1vpXzKjsOdzNgU3_Fm-Qn2FxZfQpHAzH-C_uF2231hi2nUdxN46uu9bXfkDLrc0edc34kre_BPmqyYDV9i943SdOYb8VkXSS8VvjlICH7IH5iZcnIa2lAC72qVZTfUtVUk3M3xwcHUsBLrTYt6QKZd9fMc5zAzZqw8DDdvaaHoYCu240vq8RcgCbLFuW3Li83XNrfZ_R8gVcmbffrU9LsHhLpAnIXZZRxXUyt7cmWbSrmgagll6DU3X7AXEX6yQDFr60iu2AuTeFqR7jLiaLTY1CealwUbg2L8_RfntIukQmDQUqziGj80voxcd3uW9nOouZ_4I9XVcN0JA4n62vmiBkF09DSsBcGWRN0A&key=AIzaSyBgqLtAje-cCxj_n-oFD1vsiNdRpNUfNuM');background-size:cover;background-position:center;}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(0,0,0,.55) 0%,rgba(0,0,0,.35) 50%,rgba(0,0,0,.65) 100%);}
+.hero-content{position:relative;z-index:2;max-width:800px;padding:0 20px;}
+.hero-tag{font-size:.75rem;letter-spacing:4px;text-transform:uppercase;color:rgba(255,255,255,.7);margin-bottom:20px;}
+.hero h1{font-family:'Fraunces',serif;font-size:clamp(3.5rem,8vw,7rem);color:var(--wh);line-height:1.05;margin-bottom:20px;}
+.hero h1 em{font-style:italic;color:rgba(255,255,255,.85);}
+.hero-tagline{font-size:.92rem;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.75);margin-bottom:40px;}
+.hero-btns{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;}
+.btn-primary{background:var(--ac);color:var(--wh);padding:14px 32px;text-decoration:none;font-size:.78rem;letter-spacing:2px;text-transform:uppercase;border-radius:2px;transition:opacity .3s;}
+.btn-primary:hover{opacity:.85;}
+.btn-outline{border:1px solid rgba(255,255,255,.6);color:var(--wh);padding:14px 32px;text-decoration:none;font-size:.78rem;letter-spacing:2px;text-transform:uppercase;border-radius:2px;transition:all .3s;}
+.btn-outline:hover{background:rgba(255,255,255,.1);}
+.hero-badge{position:absolute;bottom:40px;right:60px;background:rgba(255,255,255,.12);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,.2);padding:14px 20px;border-radius:8px;text-align:center;color:var(--wh);}
+.hero-badge .stars{font-size:1rem;color:#f5c842;}
+.hero-badge .rating{font-size:1.4rem;font-weight:700;}
+.hero-badge .label{font-size:.65rem;letter-spacing:2px;text-transform:uppercase;opacity:.7;}
+.stats-bar{background:var(--ac);padding:32px 60px;display:grid;grid-template-columns:repeat(4,1fr);text-align:center;}
+.stat-item{border-right:1px solid rgba(255,255,255,.2);padding:0 20px;}
+.stat-item:last-child{border-right:none;}
+.stat-num{font-family:'Fraunces',serif;font-size:2.4rem;font-weight:600;color:var(--wh);line-height:1;}
+.stat-label{font-size:.7rem;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.75);margin-top:6px;}
+section{padding:100px 60px;}
+.section-tag{font-size:.7rem;letter-spacing:4px;text-transform:uppercase;color:var(--ac);margin-bottom:20px;}
+.section-h2{font-family:'Fraunces',serif;font-size:clamp(2rem,4vw,3rem);line-height:1.15;margin-bottom:16px;color:var(--tx);}
+.section-sub{color:var(--tx2);font-size:.85rem;letter-spacing:2px;text-transform:uppercase;margin-bottom:50px;}
+.about{background:var(--bg);}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;max-width:1200px;margin:0 auto;}
+.about p{color:var(--tx2);line-height:1.85;margin-bottom:20px;font-size:.95rem;}
+.rating-badge{display:inline-flex;align-items:center;gap:10px;background:var(--bg2);border:1px solid var(--bg3);padding:12px 20px;border-radius:8px;margin-top:16px;}
+.rating-badge .stars{color:#f5c842;}
+.rating-badge span{font-size:.8rem;color:var(--tx2);}
+.about-img{border-radius:12px;overflow:hidden;aspect-ratio:4/5;}
+.about-img img{width:100%;height:100%;object-fit:cover;}
+.especialidad{position:relative;min-height:70vh;display:flex;align-items:center;justify-content:center;text-align:center;overflow:hidden;padding:80px 40px;}
+.espec-bg{position:absolute;inset:0;background-image:url('https://maps.googleapis.com/maps/api/place/photo?maxwidth=1200&photoreference=Ab43m-vxh49rvooFaUBBvA8Y1l14ZygykNhrnpFaC9sRCrYURkz92z3XEgPWEyfMHvaAnhLn2903eO6tg8hVTvEbXKf1cWYVieyr1zcVfHYgJznVMmJYNufx4Zke7DtT5eHQSpG2Ekrt9MxKVz6EclM-3zU-alaSW53r0letiK7_aoZtOyabQVLxuG-zcfXSr86X91cJlsA8MldkduroOzicd9kyvXDRGCJyMIMIxj_tS-3CEkkxsrHHdr4oVMR3U_hAIWf6Wn4ZQx_YBbbT8lyOEf9Fryms6p3IQmUaabx_TwuXl-k-nEbZ5lKie0FEeor5LyNbo-K5mDCjChStZArAHeCgXXq7TTmgVE-42aoEjmWFoIhbTkgNIo_BTAzWHsj2we6AezgQFa4ceOmP3Eq3UFfAiwjBegUt_e41hdlPqpWspiGb&key=AIzaSyBgqLtAje-cCxj_n-oFD1vsiNdRpNUfNuM');background-size:cover;background-position:center;background-attachment:fixed;}
+.espec-overlay{position:absolute;inset:0;background:rgba(0,0,0,.76);}
+.espec-content{position:relative;z-index:2;max-width:640px;}
+.espec-tag{font-size:.7rem;letter-spacing:4px;text-transform:uppercase;color:rgba(255,255,255,.6);margin-bottom:20px;}
+.espec-content h2{font-family:'Fraunces',serif;font-size:clamp(2.2rem,5vw,4rem);color:var(--wh);margin-bottom:20px;}
+.espec-content p{color:rgba(255,255,255,.8);line-height:1.8;margin-bottom:36px;}
+.btn-light{border:1px solid rgba(255,255,255,.6);color:var(--wh);padding:14px 36px;text-decoration:none;font-size:.78rem;letter-spacing:2px;text-transform:uppercase;border-radius:2px;transition:all .3s;}
+.btn-light:hover{background:rgba(255,255,255,.1);}
+.menu-section{background:var(--bg2);}
+.menu-inner{max-width:1200px;margin:0 auto;}
+.tabs{display:flex;justify-content:center;margin-bottom:50px;border-bottom:2px solid var(--bg3);}
+.tab-btn{background:none;border:none;padding:14px 32px;font-family:'Inter',sans-serif;font-size:.78rem;letter-spacing:2px;text-transform:uppercase;cursor:pointer;color:var(--tx2);border-bottom:2px solid transparent;margin-bottom:-2px;transition:all .3s;}
+.tab-btn.active{color:var(--ac);border-bottom-color:var(--ac);}
+.tab-content{display:none;}
+.tab-content.active{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+.dish-card{background:var(--bg);border-radius:10px;padding:22px 24px;display:flex;flex-direction:column;gap:8px;box-shadow:0 2px 12px rgba(0,0,0,.06);transition:transform .3s,box-shadow .3s;}
+.dish-card:hover{transform:translateY(-3px);box-shadow:0 8px 24px rgba(0,0,0,.12);}
+.dish-header{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;}
+.dish-name{font-size:.95rem;font-weight:600;letter-spacing:.5px;color:var(--tx);}
+.dish-price{background:var(--ac);color:var(--wh);padding:4px 12px;border-radius:20px;font-size:.78rem;font-weight:600;white-space:nowrap;flex-shrink:0;}
+.dish-desc{color:var(--tx2);font-size:.82rem;line-height:1.65;}
+.why{background:var(--bg);}
+.why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:32px;max-width:1100px;margin:0 auto;}
+.why-card{background:var(--bg2);border-radius:12px;padding:40px 32px;text-align:center;box-shadow:0 2px 16px rgba(0,0,0,.06);}
+.why-icon{width:52px;height:52px;margin:0 auto 20px;color:var(--ac);}
+.why-card h3{font-family:'Fraunces',serif;font-size:1.4rem;margin-bottom:14px;color:var(--tx);}
+.why-card p{color:var(--tx2);font-size:.85rem;line-height:1.8;}
+.gallery{background:var(--bg2);}
+.gallery-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;max-width:1200px;margin:0 auto;}
+.gallery-item{aspect-ratio:4/3;border-radius:10px;overflow:hidden;position:relative;cursor:pointer;}
+.gallery-item img{width:100%;height:100%;object-fit:cover;transition:transform .5s;}
+.gallery-item:nth-child(2) img{filter:saturate(1.4);}
+.gallery-item:nth-child(3) img{filter:brightness(1.15);}
+.gallery-item:nth-child(4) img{filter:contrast(1.1);}
+.gallery-item:nth-child(5) img{filter:sepia(.2);}
+.gallery-item:nth-child(6) img{filter:hue-rotate(5deg) saturate(1.2);}
+.gallery-item:hover img{transform:scale(1.06);}
+.gallery-item .ov{position:absolute;inset:0;background:rgba(0,0,0,.4);opacity:0;transition:opacity .3s;display:flex;align-items:center;justify-content:center;}
+.gallery-item:hover .ov{opacity:1;}
+.gallery-item .ov span{color:var(--wh);font-size:.75rem;letter-spacing:2px;text-transform:uppercase;}
+.testimonials{background:var(--bg);}
+.test-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;max-width:1100px;margin:0 auto;}
+.test-card{background:var(--bg2);border-radius:12px;padding:36px;position:relative;box-shadow:0 2px 16px rgba(0,0,0,.06);}
+.test-quote{font-family:Georgia,serif;font-size:5rem;line-height:.8;color:var(--ac);opacity:.3;position:absolute;top:20px;left:28px;}
+.test-text{color:var(--tx);line-height:1.8;font-size:.9rem;margin-bottom:20px;padding-top:20px;font-style:italic;}
+.test-footer{display:flex;align-items:center;justify-content:space-between;}
+.test-author{font-weight:600;font-size:.85rem;color:var(--tx);}
+.test-meta{font-size:.72rem;color:var(--tx2);margin-top:2px;}
+.test-stars{color:#f5c842;font-size:1rem;}
+.contact{background:var(--bg2);}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;max-width:1100px;margin:0 auto;}
+.contact-info{display:flex;flex-direction:column;gap:24px;}
+.contact-row{display:flex;align-items:flex-start;gap:16px;}
+.contact-icon{width:40px;height:40px;background:var(--ac);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.contact-icon svg{width:18px;height:18px;stroke:var(--wh);fill:none;}
+.contact-row h4{font-size:.75rem;letter-spacing:2px;text-transform:uppercase;color:var(--ac);margin-bottom:4px;}
+.contact-row p,.contact-row a{color:var(--tx);font-size:.9rem;line-height:1.6;text-decoration:none;}
+.horario-table{width:100%;border-collapse:collapse;margin-top:8px;}
+.horario-table td{padding:6px 0;font-size:.85rem;color:var(--tx2);border-bottom:1px solid var(--bg3);}
+.horario-table td:first-child{font-weight:600;color:var(--tx);width:40%;}
+.whatsapp-btn{display:flex;align-items:center;gap:12px;background:#25D366;color:#fff;padding:16px 28px;border-radius:8px;text-decoration:none;font-size:.85rem;font-weight:600;margin-top:8px;transition:background .3s;}
+.whatsapp-btn:hover{background:#1da851;}
+.map-frame{border-radius:12px;overflow:hidden;height:100%;min-height:380px;}
+.map-frame iframe{width:100%;height:100%;border:none;}
+footer{background:#0d0a09;color:rgba(250,246,240,.8);padding:60px;}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:60px;max-width:1200px;margin:0 auto;}
+.footer-brand h3{font-family:'Fraunces',serif;font-size:1.8rem;color:#fff;margin-bottom:14px;}
+.footer-brand p{font-size:.85rem;line-height:1.8;color:rgba(250,246,240,.6);max-width:320px;}
+.footer-col h4{font-size:.72rem;letter-spacing:3px;text-transform:uppercase;color:rgba(250,246,240,.45);margin-bottom:20px;}
+.footer-col ul{list-style:none;display:flex;flex-direction:column;gap:10px;}
+.footer-col a{color:rgba(250,246,240,.65);text-decoration:none;font-size:.85rem;transition:color .3s;}
+.footer-col a:hover{color:#fff;}
+.footer-bottom{max-width:1200px;margin:40px auto 0;padding-top:24px;border-top:1px solid rgba(255,255,255,.1);display:flex;justify-content:space-between;font-size:.75rem;color:rgba(250,246,240,.4);}
+.footer-bottom a{color:rgba(250,246,240,.55);text-decoration:none;}
+.wa-float{position:fixed;bottom:30px;right:30px;z-index:999;width:56px;height:56px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(37,211,102,.4);text-decoration:none;transition:transform .3s;}
+.wa-float:hover{transform:scale(1.1);}
+.wa-float svg{width:28px;height:28px;fill:#fff;}
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s ease;}
+.reveal.visible{opacity:1;transform:none;}
+@media(max-width:768px){
+  nav{padding:16px 24px;}
+  nav.scrolled{padding:12px 24px;}
+  .nav-links{display:none;}
+  section{padding:70px 24px;}
+  .about-grid,.contact-grid{grid-template-columns:1fr;}
+  .stats-bar{grid-template-columns:repeat(2,1fr);gap:20px;padding:32px 24px;}
+  .stat-item{border-right:none;border-bottom:1px solid rgba(255,255,255,.2);padding-bottom:16px;}
+  .why-grid{grid-template-columns:1fr;}
+  .gallery-grid{grid-template-columns:repeat(2,1fr);}
+  .test-grid{grid-template-columns:1fr;}
+  .footer-grid{grid-template-columns:1fr;gap:32px;}
+  .tab-content.active{grid-template-columns:1fr;}
+  .hero-badge{bottom:20px;right:20px;}
 }
-*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth;font-size:16px}
-body{background:var(--bg);color:var(--cream);font-family:'Inter',sans-serif;overflow-x:hidden;line-height:1.6}
-h1,h2,h3,h4{font-family:'DM Serif Display',serif;font-weight:400;line-height:1.2}
-img{display:block;max-width:100%}
-a{text-decoration:none;color:inherit}
-
-/* SCROLLBAR */
-::-webkit-scrollbar{width:6px}
-::-webkit-scrollbar-track{background:var(--bg)}
-::-webkit-scrollbar-thumb{background:var(--accent);border-radius:3px}
-
-/* NAV */
-nav{
-  position:fixed;top:0;left:0;right:0;z-index:1000;
-  padding:1rem 2rem;
-  display:flex;align-items:center;justify-content:space-between;
-  background:rgba(6,13,20,0.0);
-  backdrop-filter:blur(0px);
-  border-bottom:1px solid transparent;
-  transition:all 0.4s ease;
-}
-nav.scrolled{
-  background:rgba(6,13,20,0.88);
-  backdrop-filter:blur(20px);
-  border-bottom:1px solid var(--line);
-}
-.nav-logo{
-  font-family:'DM Serif Display',serif;
-  font-size:1.6rem;
-  letter-spacing:0.02em;
-  color:var(--cream);
-}
-.nav-logo span{color:var(--accent-light)}
-.nav-links{display:flex;gap:2rem;list-style:none;align-items:center}
-.nav-links a{
-  font-size:0.875rem;font-weight:500;letter-spacing:0.05em;
-  color:rgba(245,241,237,0.75);
-  transition:color 0.3s;text-transform:uppercase;
-}
-.nav-links a:hover{color:var(--cream)}
-.nav-cta{
-  background:var(--accent);color:var(--cream)!important;
-  padding:0.5rem 1.25rem;border-radius:4px;
-  transition:background 0.3s!important;
-}
-.nav-cta:hover{background:var(--accent-light)!important}
-.nav-burger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px}
-.nav-burger span{display:block;width:24px;height:2px;background:var(--cream);transition:all 0.3s}
-.mobile-menu{
-  display:none;position:fixed;top:0;left:0;right:0;bottom:0;
-  background:rgba(6,13,20,0.97);backdrop-filter:blur(20px);
-  z-index:999;flex-direction:column;align-items:center;justify-content:center;gap:2rem;
-}
-.mobile-menu.open{display:flex}
-.mobile-menu a{font-family:'DM Serif Display',serif;font-size:2rem;color:var(--cream);transition:color 0.3s}
-.mobile-menu a:hover{color:var(--accent-light)}
-.mobile-close{position:absolute;top:1.5rem;right:2rem;font-size:2rem;cursor:pointer;color:var(--cream)}
-
-/* HERO */
-#hero{
-  position:relative;height:100svh;min-height:600px;
-  display:flex;align-items:center;justify-content:center;
-  overflow:hidden;
-}
-.hero-bg{
-  position:absolute;inset:0;
-  background-image:url('https://maps.googleapis.com/maps/api/place/photo?maxwidth=1200&photoreference=Ab43m-uPxYwv_opVMyq5G-rJ6h_XFDjZ0IyBLiwnIBmP-icy94nuyJb7s36PTNz2DLZodhCNmsQItYJgfndjCg1GhkUrROfOx1dNeW3nCk0GCC1_icqqthLiEydyzH-67ox1SI9r1t-iVhXyZ6OPATXoRCEdrh2pW4EWO4e1dSwNr49zQTAQ3fwVcJ949_h7L1uOET9ZtwfRmtfjDRgP42B-QEZtwavrdqB1D5KKBbOfJm-Nors7y2KL95fBCIyRvNY74oQ7Bglesjf-r7y3ftMUB_7EIQ-pcUJRvirfXJI_PaTl7L0gijIfh8ZLQp410lwzcKZzNZEGCnHg5nHGj3birDJo3C3vxFQ84bp8iDZFwNbqUZ81F3tjEO5E0Y9DzT-K4HidJ4EE99JqAdPW5f76bE9yhjTXmABUNsQLWF0MsEw92A&key=AIzaSyBgqLtAje-cCxj_n-oFD1vsiNdRpNUfNuM');
-  background-size:cover;background-position:center;
-  transform:scale(1.08);
-  transition:transform 8s ease;
-}
-.hero-bg.loaded{transform:scale(1)}
-.hero-overlay{
-  position:absolute;inset:0;
-  background:linear-gradient(to bottom, rgba(6,13,20,0.35) 0%, rgba(6,13,20,0.55) 50%, rgba(6,13,20,0.85) 100%);
-}
-.hero-content{
-  position:relative;z-index:2;
-  text-align:center;padding:0 1.5rem;
-  max-width:800px;
-}
-.hero-badge{
-  display:inline-flex;align-items:center;gap:0.5rem;
-  background:rgba(42,111,168,0.25);border:1px solid rgba(42,111,168,0.5);
-  padding:0.4rem 1rem;border-radius:50px;
-  font-size:0.75rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;
-  color:var(--accent-light);margin-bottom:1.5rem;
-  backdrop-filter:blur(8px);
-}
-.hero-badge::before{content:'🦞';font-size:0.85rem}
-.hero-title{
-  font-size:clamp(3rem,8vw,6.5rem);
-  color:var(--cream);
-  text-shadow:0 4px 40px rgba(0,0,0,0.5);
-  margin-bottom:1rem;
-}
-.hero-title em{color:var(--accent-light);font-style:italic}
-.hero-tagline{
-  font-size:clamp(1rem,2.5vw,1.4rem);
-  color:rgba(245,241,237,0.85);
-  font-weight:300;letter-spacing:0.03em;
-  margin-bottom:2.5rem;
-}
-.hero-actions{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
-.btn-primary{
-  background:var(--accent);color:var(--cream);
-  padding:0.875rem 2rem;border-radius:4px;
-  font-size:0.875rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;
-  transition:all 0.3s;border:2px solid var(--accent);
-}
-.btn-primary:hover{background:var(--accent-light);border-color:var(--accent-light);transform:translateY(-2px);box-shadow:0 8px 30px rgba(42,111,168,0.4)}
-.btn-outline{
-  background:transparent;color:var(--cream);
-  padding:0.875rem 2rem;border-radius:4px;
-  font-size:0.875rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;
-  border:2px solid rgba(245,241,237,0.4);
-  transition:all 0.3s;
-}
-.btn-outline:hover{border-color:var(--cream);background:rgba(245,241,237,0.08);transform:translateY(-2px)}
-.hero-scroll{
-  position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);
-  display:flex;flex-direction:column;align-items:center;gap:0.5rem;
-  color:rgba(245,241,237,0.5);font-size:0.75rem;letter-spacing:0.1em;text-transform:uppercase;
-  animation:bounce 2.5s infinite;
-}
-.hero-scroll::after{
-  content:'';display:block;width:1px;height:40px;
-  background:linear-gradient(to bottom,rgba(245,241,237,0.4),transparent);
-}
-@keyframes bounce{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(8px)}}
-
-/* SECTION BASE */
-section{padding:6rem 0}
-.container{max-width:1200px;margin:0 auto;padding:0 2rem}
-.section-label{
-  display:inline-block;
-  font-size:0.7rem;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;
-  color:var(--accent-light);margin-bottom:0.75rem;
-}
-.section-title{font-size:clamp(2rem,4vw,3rem);color:var(--cream);margin-bottom:1rem}
-.section-line{width:50px;height:2px;background:var(--accent);margin-bottom:2rem}
-
-/* REVEAL */
-.reveal{opacity:0;transform:translateY(40px);transition:opacity 0.7s ease,transform 0.7s ease}
-.reveal.visible{opacity:1;transform:translateY(0)}
-.reveal-left{opacity:0;transform:translateX(-40px);transition:opacity 0.7s ease,transform 0.7s ease}
-.reveal-left.visible{opacity:1;transform:translateX(0)}
-.reveal-right{opacity:0;transform:translateX(40px);transition:opacity 0.7s ease,transform 0.7s ease}
-.reveal-right.visible{opacity:1;transform:translateX(0)}
-
-/* ABOUT */
-#about{background:var(--bg-2)}
-.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center}
-.about-image{position:relative}
-.about-image img{width:100%;height:500px;object-fit:cover;border-radius:8px}
-.about-image-accent{
-  position:absolute;bottom:-20px;right:-20px;
-  width:60%;height:60%;
-  border:2px solid var(--accent);
-  border-radius:8px;z-index:-1;
-}
-.about-text{padding:1rem 0}
-.about-text p{color:rgba(245,241,237,0.75);line-height:1.8;margin-bottom:1.5rem;font-size:1rem}
-.about-badge{
-  display:inline-flex;align-items:center;gap:0.75rem;
-  background:rgba(42,111,168,0.12);border:1px solid rgba(42,111,168,0.3);
-  padding:1rem 1.5rem;border-radius:8px;margin-top:1rem;
-}
-.about-badge-stars{color:var(--gold);font-size:1.1rem;letter-spacing:2px}
-.about-badge-text{font-size:0.8rem;color:rgba(245,241,237,0.65);line-height:1.4}
-.about-badge-text strong{display:block;color:var(--cream);font-size:1rem}
-
-/* MENU */
-#menu{background:var(--bg)}
-.menu-header{text-align:center;margin-bottom:3.5rem}
-.menu-header .section-line{margin:0 auto 2rem}
-.menu-categories{display:flex;flex-direction:column;gap:3rem}
-.menu-category-title{
-  font-family:'DM Serif Display',serif;font-size:1.5rem;
-  color:var(--accent-light);margin-bottom:1.5rem;
-  padding-bottom:0.75rem;border-bottom:1px solid var(--line);
-  display:flex;align-items:center;gap:0.75rem;
-}
-.menu-category-title::before{content:'';display:block;width:6px;height:6px;background:var(--accent);border-radius:50%}
-.menu-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
-.menu-card{
-  background:var(--bg-2);border:1px solid var(--line);
-  border-radius:8px;padding:1.5rem;
-  transition:all 0.35s;cursor:default;position:relative;overflow:hidden;
-}
-.menu-card::before{
-  content:'';position:absolute;inset:0;
-  background:linear-gradient(135deg,rgba(42,111,168,0.05),transparent);
-  opacity:0;transition:opacity 0.35s;
-}
-.menu-card:hover{transform:translateY(-4px);border-color:rgba(42,111,168,0.4);box-shadow:0 12px 40px rgba(0,0,0,0.3)}
-.menu-card:hover::before{opacity:1}
-.menu-card-name{font-family:'DM Serif Display',serif;font-size:1.1rem;color:var(--cream);margin-bottom:0.5rem}
-.menu-card-desc{font-size:0.8rem;color:rgba(245,241,237,0.5);margin-bottom:1rem;line-height:1.5}
-.menu-card-price{
-  font-size:1.2rem;font-weight:600;color:var(--accent-light);
-}
-
-/* GALLERY */
-#gallery{background:var(--bg-3)}
-.gallery-header{text-align:center;margin-bottom:3rem}
-.gallery-header .section-line{margin:0 auto 2rem}
-.gallery-grid{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  grid-template-rows:repeat(2,280px);
-  gap:0.75rem;
-}
-.gallery-item{
-  overflow:hidden;border-radius:6px;position:relative;cursor:pointer;
-}
-.gallery-item img{
-  width:100%;height:100%;object-fit:cover;
-  transition:transform 0.6s ease;
-}
-.gallery-item:hover img{transform:scale(1.08)}
-.gallery-item-overlay{
-  position:absolute;inset:0;
-  background:linear-gradient(to top,rgba(6,13,20,0.6),transparent);
-  opacity:0;transition:opacity 0.4s;
-  display:flex;align-items:flex-end;padding:1rem;
-}
-.gallery-item:hover .gallery-item-overlay{opacity:1}
-.gallery-item-overlay span{color:var(--cream);font-size:0.85rem;font-weight:500}
-
-/* TESTIMONIALS */
-#testimonials{background:var(--bg-2)}
-.testimonials-header{text-align:center;margin-bottom:3rem}
-.testimonials-header .section-line{margin:0 auto 2rem}
-.testimonials-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
-.testimonial-card{
-  background:var(--bg-3);border:1px solid var(--line);
-  border-radius:8px;padding:2rem;
-  position:relative;transition:all 0.35s;
-}
-.testimonial-card:hover{border-color:rgba(42,111,168,0.35);transform:translateY(-3px);box-shadow:0 12px 40px rgba(0,0,0,0.25)}
-.testimonial-stars{color:var(--gold);font-size:1rem;margin-bottom:1rem;letter-spacing:2px}
-.testimonial-text{
-  font-size:0.95rem;color:rgba(245,241,237,0.8);
-  line-height:1.75;margin-bottom:1.5rem;font-style:italic;
-}
-.testimonial-text::before{content:'"';font-family:'DM Serif Display',serif;font-size:3rem;color:var(--accent);line-height:0;vertical-align:-0.75rem;margin-right:0.2rem}
-.testimonial-author{
-  font-size:0.8rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;
-  color:var(--accent-light);
-}
-.testimonial-tag{
-  position:absolute;top:1.25rem;right:1.25rem;
-  background:rgba(42,111,168,0.15);
-  padding:0.25rem 0.6rem;border-radius:50px;
-  font-size:0.7rem;color:var(--accent-light);
-}
-
-/* CONTACT */
-#contact{background:var(--bg)}
-.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start}
-.contact-info h2{margin-bottom:0.5rem}
-.contact-info p{color:rgba(245,241,237,0.65);margin-bottom:2rem;font-size:0.95rem}
-.contact-block{margin-bottom:2rem}
-.contact-block-title{
-  font-size:0.7rem;font-weight:600;letter-spacing:0.15em;text-transform:uppercase;
-  color:var(--accent-light);margin-bottom:0.75rem;
-}
-.contact-item{
-  display:flex;align-items:flex-start;gap:0.75rem;
-  padding:0.6rem 0;border-bottom:1px solid var(--line);
-  font-size:0.9rem;color:rgba(245,241,237,0.75);
-}
-.contact-item:last-child{border-bottom:none}
-.contact-item-icon{width:20px;text-align:center;flex-shrink:0;margin-top:2px;font-size:0.9rem}
-.contact-item a{color:rgba(245,241,237,0.75);transition:color 0.3s}
-.contact-item a:hover{color:var(--accent-light)}
-.hours-grid{display:grid;grid-template-columns:1fr 1fr;gap:0.25rem}
-.hour-item{
-  display:flex;justify-content:space-between;
-  padding:0.5rem 0;border-bottom:1px solid var(--line);
-  font-size:0.85rem;
-}
-.hour-item span:first-child{color:rgba(245,241,237,0.55);text-transform:capitalize}
-.hour-item span:last-child{color:var(--cream);font-weight:500}
-.contact-map{
-  border-radius:8px;overflow:hidden;border:1px solid var(--line);
-  background:var(--bg-2);
-}
-.contact-map iframe{width:100%;height:380px;border:none;filter:grayscale(0.2) brightness(0.85)}
-.whatsapp-cta{
-  display:inline-flex;align-items:center;gap:0.75rem;
-  background:#25d366;color:#fff;
-  padding:0.875rem 1.75rem;border-radius:4px;
-  font-size:0.875rem;font-weight:600;letter-spacing:0.05em;
-  transition:all 0.3s;margin-top:1.5rem;
-}
-.whatsapp-cta:hover{background:#1fb554;transform:translateY(-2px);box-shadow:0 8px 24px rgba(37,211,102,0.35)}
-.whatsapp-cta svg{width:20px;height:20px;fill:currentColor}
-
-/* FOOTER */
-footer{
-  background:rgba(4,9,14,0.98);border-top:1px solid var(--line);
-  padding:3rem 0 1.5rem;
-}
-.footer-content{
-  display:grid;grid-template-columns:2fr 1fr 1fr;gap:3rem;
-  margin-bottom:2.5rem;
-}
-.footer-brand p{color:rgba(245,241,237,0.5);font-size:0.85rem;line-height:1.7;margin-top:0.75rem}
-.footer-col h4{
-  font-family:'Inter',sans-serif;font-size:0.75rem;font-weight:600;
-  letter-spacing:0.15em;text-transform:uppercase;
-  color:var(--accent-light);margin-bottom:1rem;
-}
-.footer-col ul{list-style:none}
-.footer-col ul li{margin-bottom:0.5rem}
-.footer-col ul li a{font-size:0.85rem;color:rgba(245,241,237,0.5);transition:color 0.3s}
-.footer-col ul li a:hover{color:var(--cream)}
-.footer-bottom{
-  border-top:1px solid var(--line);padding-top:1.5rem;
-  display:flex;align-items:center;justify-content:space-between;
-  flex-wrap:wrap;gap:1rem;
-}
-.footer-bottom p{font-size:0.8rem;color:rgba(245,241,237,0.35)}
-.footer-bottom a{color:rgba(42,111,168,0.8);transition:color 0.3s}
-.footer-bottom a:hover{color:var(--accent-light)}
-
-/* FLOATING WHATSAPP */
-.fab-whatsapp{
-  position:fixed;bottom:2rem;right:2rem;z-index:900;
-  width:56px;height:56px;border-radius:50%;
-  background:#25d366;
-  display:flex;align-items:center;justify-content:center;
-  box-shadow:0 4px 20px rgba(37,211,102,0.4);
-  transition:all 0.3s;
-  animation:fabPulse 3s infinite;
-}
-.fab-whatsapp:hover{transform:scale(1.1);box-shadow:0 6px 30px rgba(37,211,102,0.6)}
-.fab-whatsapp svg{width:28px;height:28px;fill:#fff}
-@keyframes fabPulse{
-  0%,100%{box-shadow:0 4px 20px rgba(37,211,102,0.4)}
-  50%{box-shadow:0 4px 30px rgba(37,211,102,0.7)}
-}
-
-/* RESPONSIVE */
-@media(max-width:960px){
-  .about-grid{grid-template-columns:1fr;gap:2.5rem}
-  .about-image img{height:350px}
-  .contact-grid{grid-template-columns:1fr;gap:2.5rem}
-  .menu-grid{grid-template-columns:repeat(2,1fr)}
-  .testimonials-grid{grid-template-columns:1fr 1fr}
-  .gallery-grid{grid-template-columns:repeat(2,1fr);grid-template-rows:repeat(3,220px)}
-  .footer-content{grid-template-columns:1fr 1fr;gap:2rem}
-}
-@media(max-width:700px){
-  .nav-links{display:none}
-  .nav-burger{display:flex}
-  section{padding:4rem 0}
-  .menu-grid{grid-template-columns:1fr}
-  .testimonials-grid{grid-template-columns:1fr}
-  .gallery-grid{grid-template-columns:1fr 1fr;grid-template-rows:repeat(3,180px)}
-  .hours-grid{grid-template-columns:1fr}
-  .footer-content{grid-template-columns:1fr}
-  .footer-bottom{flex-direction:column;text-align:center}
-  .hero-actions{flex-direction:column;align-items:center}
-}
-@media(max-width:480px){
-  .gallery-grid{grid-template-columns:1fr;grid-template-rows:none}
-  .gallery-item{height:200px}
-}
-</style>
+  </style>
 </head>
 <body>
 
-<!-- MOBILE MENU -->
-<div class="mobile-menu" id="mobileMenu">
-  <span class="mobile-close" id="mobileClose">✕</span>
-  <a href="#about" onclick="closeMobile()">Nosotros</a>
-  <a href="#menu" onclick="closeMobile()">Carta</a>
-  <a href="#gallery" onclick="closeMobile()">Galería</a>
-  <a href="#testimonials" onclick="closeMobile()">Opiniones</a>
-  <a href="#contact" onclick="closeMobile()">Contacto</a>
-</div>
-
 <!-- NAV -->
-<nav id="mainNav">
-  <a href="#hero" class="nav-logo">Tama<span>rells</span></a>
+<nav id="navbar">
+  <a href="#hero" class="nav-logo">Tamarells</a>
   <ul class="nav-links">
     <li><a href="#about">Nosotros</a></li>
     <li><a href="#menu">Carta</a></li>
     <li><a href="#gallery">Galería</a></li>
     <li><a href="#testimonials">Opiniones</a></li>
-    <li><a href="#contact" class="nav-cta">Reservar</a></li>
+    <li><a href="#contact">Contacto</a></li>
   </ul>
-  <div class="nav-burger" id="navBurger">
-    <span></span><span></span><span></span>
-  </div>
+  <a href="https://wa.me/971865049" class="nav-cta">Reservar</a>
 </nav>
 
 <!-- HERO -->
-<section id="hero">
-  <div class="hero-bg" id="heroBg"></div>
+<section class="hero" id="hero">
+  <div class="hero-bg"></div>
   <div class="hero-overlay"></div>
   <div class="hero-content">
-    <div class="hero-badge">Marisquería · Port de Pollença</div>
-    <h1 class="hero-title" id="heroTitle">Tama<em>rells</em></h1>
-    <p class="hero-tagline" id="heroTagline">Playa, sabor y atmósfera perfecta</p>
-    <div class="hero-actions" id="heroActions">
-      <a href="#menu" class="btn-primary">Ver la Carta</a>
-      <a href="#contact" class="btn-outline">Cómo Llegar</a>
+    <p class="hero-tag">Restaurante · Port de Pollença, Mallorca</p>
+    <h1>Sabor y mar<br><em>en Tamarells</em></h1>
+    <p class="hero-tagline">Una experiencia única</p>
+    <div class="hero-btns">
+      <a href="#menu" class="btn-primary">Ver la carta</a>
+      <a href="#contact" class="btn-outline">Cómo llegar</a>
     </div>
   </div>
-  <div class="hero-scroll">Descubrir</div>
-</section>
-
-<!-- ABOUT -->
-<section id="about">
-  <div class="container">
-    <div class="about-grid">
-      <div class="about-image reveal-left">
-        <img src="https://maps.googleapis.com/maps/api/place/photo?maxwidth=1200&photoreference=Ab43m-uezlkfa78TdE4NMIQBxT-pJNtMZYq9hNeuENvHQof-BAwjsSKqWX-f7Kv6tFf2dv67DdZkl-6_7ueeywhRt5Q7sZxc1eotpDgepkgh6amRAcniGX_KArbmT0XfYkkrYvBrX1qGQ6uK9bUUs6XKNvarVOrYCGAqPbbkqCBkQwcfPiNbDWu4FLwXDRfB_mUicJahNjLzMyAczwqD1OvqR3PHRTl4_4MjyMuMAwNDg-G1bHHYYkrOfMu6fuQSz3wTfByD-ICUa2rDb9PiWcJWfk4bC0vmZJAvfMruWAkuOTWjj-uBcpE6CG6iMRU7n6oC4SL5q_leZL8YGd2KNdnrVmHtXI99DJp-Ux26wD2gSC0aRts6KW3xt2ueBu3TB-KJ-pYvbU_l8SzFB22yKvi8Hq8sZO68zR_sWi6WAoPly3e0b2K_Q6ddmoTd5jI6n-TK&key=AIzaSyBgqLtAje-cCxj_n-oFD1vsiNdRpNUfNuM" alt="Tamarells restaurante frente al mar">
-        <div class="about-image-accent"></div>
-      </div>
-      <div class="about-text reveal-right">
-        <span class="section-label">Sobre Nosotros</span>
-        <h2 class="section-title">Un rincón privilegiado<br>junto al mar</h2>
-        <div class="section-line"></div>
-        <p>Tamarells es un restaurante junto a la playa que ofrece un entorno hermoso y acogedor para disfrutar en familia. Con vistas al mar y una atmósfera tranquila, es el lugar ideal para saborear comida de calidad en un ambiente relajado.</p>
-        <p>Ubicados en el Passeig de Londres, frente a las aguas cristalinas de Port de Pollença, nuestro equipo se dedica a ofrecerte la mejor experiencia gastronómica del Mediterráneo, con productos frescos y recetas que respetan la tradición marinera de Mallorca.</p>
-        <div class="about-badge">
-          <div>
-            <div class="about-badge-stars">★★★★</div>
-          </div>
-          <div class="about-badge-text">
-            <strong>3.9 / 5 en Google</strong>
-            Valorado por cientos de visitantes
-          </div>
-        </div>
-        <br>
-        <a href="#contact" class="btn-primary" style="display:inline-block;margin-top:1rem">Visítanos hoy</a>
-      </div>
-    </div>
+  <div class="hero-badge">
+    <div class="stars">★★★★</div>
+    <div class="rating">3.9 / 5</div>
+    <div class="label">Google Reviews</div>
   </div>
 </section>
 
-<!-- MENU -->
-<section id="menu">
-  <div class="container">
-    <div class="menu-header reveal">
-      <span class="section-label">Nuestra Carta</span>
-      <h2 class="section-title">Lo mejor del mar<br>en cada plato</h2>
-      <div class="section-line"></div>
+<!-- STATS BAR -->
+<div class="stats-bar">
+  <div class="stat-item"><div class="stat-num">20+</div><div class="stat-label">Años en Pollença</div></div>
+  <div class="stat-item"><div class="stat-num">18</div><div class="stat-label">Platos en carta</div></div>
+  <div class="stat-item"><div class="stat-num">3.9★</div><div class="stat-label">Google</div></div>
+  <div class="stat-item"><div class="stat-num">Pollença</div><div class="stat-label">Mallorca</div></div>
+</div>
+
+<!-- SOBRE NOSOTROS -->
+<section class="about" id="about">
+  <div class="about-grid">
+    <div class="reveal">
+      <p class="section-tag">Nuestra historia</p>
+      <h2 class="section-h2">Un lugar con alma y tradición en Port de Pollença</h2>
+      <p>Tamarells nació de la pasión por la cocina mediterránea y el amor por el mar de Mallorca. Con años de historia en el Passeig de Londres, hemos construido un rincón donde la tradición y el sabor auténtico son los protagonistas de cada visita, recibiendo a familias, viajeros y locales que repiten año tras año.</p>
+      <p>Cocinamos con productos frescos y recetas de siempre. Cada plato que sale de nuestra cocina respeta los sabores originales de la gastronomía mallorquina, utilizando ingredientes de proximidad seleccionados cada mañana para garantizar la máxima calidad y autenticidad en tu mesa.</p>
+      <p>Un espacio acogedor donde el tiempo se detiene frente al mar. El entorno inigualable de Port de Pollença envuelve cada comida, creando una atmósfera que combina la calidez del servicio con la belleza natural del Mediterráneo.</p>
+      <div class="rating-badge">
+        <span class="stars">★★★★</span>
+        <span><strong>3.9 / 5</strong> en Google · Valorado por cientos de clientes</span>
+      </div>
     </div>
-    <div class="menu-categories">
-
-      <div class="reveal">
-        <div class="menu-category-title">Especialidades de Mar</div>
-        <div class="menu-grid">
-          <div class="menu-card">
-            <div class="menu-card-name">Lubina a la sal</div>
-            <div class="menu-card-desc">Lubina fresca cocinada en costra de sal, preservando todos sus jugos naturales</div>
-            <div class="menu-card-price">22 €</div>
-          </div>
-          <div class="menu-card">
-            <div class="menu-card-name">Langostinos a la plancha</div>
-            <div class="menu-card-desc">Langostinos del Mediterráneo cocinados a la plancha con ajo y perejil fresco</div>
-            <div class="menu-card-price">24 €</div>
-          </div>
-          <div class="menu-card">
-            <div class="menu-card-name">Paella de marisco</div>
-            <div class="menu-card-desc">Arroz tradicional con una selección de mariscos frescos y azafrán de primera calidad</div>
-            <div class="menu-card-price">28 €</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="reveal">
-        <div class="menu-category-title">Platos Principales</div>
-        <div class="menu-grid">
-          <div class="menu-card">
-            <div class="menu-card-name">Dorada al horno</div>
-            <div class="menu-card-desc">Dorada entera asada al horno con patatas panaderas y aceite de oliva virgen</div>
-            <div class="menu-card-price">20 €</div>
-          </div>
-          <div class="menu-card">
-            <div class="menu-card-name">Sepia a la andaluza</div>
-            <div class="menu-card-desc">Sepia rebozada con harina especial al estilo andaluz, crujiente y tierna por dentro</div>
-            <div class="menu-card-price">18 €</div>
-          </div>
-          <div class="menu-card">
-            <div class="menu-card-name">Salmón a la mantequilla</div>
-            <div class="menu-card-desc">Filete de salmón noruego con salsa de mantequilla, alcaparras y eneldo fresco</div>
-            <div class="menu-card-price">23 €</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="reveal">
-        <div class="menu-category-title">Refrescos y Bebidas</div>
-        <div class="menu-grid">
-          <div class="menu-card">
-            <div class="menu-card-name">Agua mineral</div>
-            <div class="menu-card-desc">Agua mineral natural o con gas, en botella de 50cl</div>
-            <div class="menu-card-price">2 €</div>
-          </div>
-          <div class="menu-card">
-            <div class="menu-card-name">Cerveza artesanal</div>
-            <div class="menu-card-desc">Cerveza artesanal local, elaborada en Mallorca con ingredientes naturales</div>
-            <div class="menu-card-price">4 €</div>
-          </div>
-          <div class="menu-card">
-            <div class="menu-card-name">Vino blanco de la casa</div>
-            <div class="menu-card-desc">Vino blanco mallorquín, fresco y afrutado, perfecto para acompañar el marisco</div>
-            <div class="menu-card-price">5 €</div>
-          </div>
-        </div>
-      </div>
-
+    <div class="about-img reveal">
+      <img src="https://maps.googleapis.com/maps/api/place/photo?maxwidth=1200&photoreference=Ab43m-t3Gv_ELH_XCMIfCXHoRtbvh8Y_c35ZPVuFPntFgHeW2HKgzFpQvAKOEw6Cyr_dTrnEmFiAUe34ljrBNI6H3xXB4eHEZRYvu4k7mvq2tzLNXrURBGUYF1urVDmLogiVhHfhwYsY5BiQ02Az8eQVBPnD1oY1rZomvbMCrBqQzk7kTp1KEdl5N_1vg4E26Mr_d0RW_1VTBjg1Kcg3WkCy7-10OStw7sULBbQPzGCcChUyxynt-tgjYBYw7H5n799S0aS-WzDdS8ERCJQW7GC6deHd0LCFOJMg0b-Gqy_C-i5JpmfooJk5OGo2UpdQvF9G9NQCqw8gly-bIr9CbhIY0qedAkNkvVCcW8pYrakuG0ze_JaK72yGtoUUVVhZjWUJhyr1EzQSGYAnj6AHSKPhpVmFcW26rbXcs7wedMmrOpkMkNpkH787qXMfp0qODp8z&key=AIzaSyBgqLtAje-cCxj_n-oFD1vsiNdRpNUfNuM" alt="Tamarells restaurante Port de Pollença">
     </div>
   </div>
 </section>
 
-<!-- GALLERY -->
-<section id="gallery">
-  <div class="container">
-    <div class="gallery-header reveal">
-      <span class="section-label">Galería</span>
-      <h2 class="section-title">Momentos en Tamarells</h2>
-      <div class="section-line"></div>
-    </div>
-    <div class="gallery-grid reveal">
-      <div class="gallery-item">
-        <img src="https://maps.googleapis.com/maps/api/place/photo?maxwidth=1200&photoreference=Ab43m-uPxYwv_opVMyq5G-rJ6h_XFDjZ0IyBLiwnIBmP-icy94nuyJb7s36PTNz2DLZodhCNmsQItYJgfndjCg1GhkUrROfOx1dNeW3nCk0GCC1_icqqthLiEydyzH-67ox1SI9r1t-iVhXyZ6OPATXoRCEdrh2pW4EWO4e1dSwNr49zQTAQ3fwVcJ949_h7L1uOET9ZtwfRmtfjDRgP42B-QEZtwavrdqB1D5KKBbOfJm-Nors7y2KL95fBCIyRvNY74oQ7Bglesjf-r7y3ftMUB_7EIQ-pcUJRvirfXJI_PaTl7L0gijIfh8ZLQp410lwzcKZzNZEGCnHg5nHGj3birDJo3C3vxFQ84bp8iDZFwNbqUZ81F3tjEO5E0Y9DzT-K4HidJ4EE99JqAdPW5f76bE9yhjTXmABUNsQLWF0MsEw92A&key=AIzaSyBgqLtAje-cCxj_n-oFD1vsiNdRpNUfNuM" alt="Vista del restaurante">
-        <div class="gallery-item-overlay"><span>Terraza con vistas</span></div>
-      </div>
-      <div class="gallery-item">
-        <img src="https://maps.googleapis.com/maps/api/place/photo?maxwidth=1200&photoreference=Ab43m-uezlkfa78TdE4NMIQBxT-pJNtMZYq9hNeuENvHQof-BAwjsSKqWX-f7Kv6tFf2dv67DdZkl-6_7ueeywhRt5Q7sZxc1eotpDgepkgh6amRAcniGX_KArbmT0XfYkkrYvBrX1qGQ6uK9bUUs6XKNvarVOrYCGAqPbbkqCBkQwcfPiNbDWu4FLwXDRfB_mUicJahNjLzMyAczwqD1OvqR3PHRTl4_4MjyMuMAwNDg-G1bHHYYkrOfMu6fuQSz3wTfByD-ICUa2rDb9PiWcJWfk4bC0vmZJAvfMruWAkuOTWjj-uBcpE6CG6iMRU7n6oC4SL5q_leZL8YGd2KNdnrVmHtXI99DJp-Ux26wD2gSC0aRts6KW3xt2ueBu3TB-KJ-pYvbU_l8SzFB22yKvi8Hq8sZO68zR_sWi6WAoPly3e0b2K_Q6ddmoTd5jI6n-TK&key=AIzaSyBgqLtAje-cCxj_n-oFD1vsiNdRpNUfNuM" alt="Interior del restaurante">
-        <div class="gallery-item-overlay"><span>Ambiente acogedor</span></div>
-      </div>
-      <div class="gallery-item">
-        <img src="https://maps.googleapis.com/maps/api/place/photo?maxwidth=1200&photoreference=Ab43m-vcQpm_56m5180rAzbKOA0XDbduOPIt0g2swsqVSPaEmuiRHUgEtdE7C5do_r24Qu46NUYgLBGyk9VAKgt-mQAEVj0HTnXqK_8M9yYxe6DzXxhQR-KLbJueDakpG08iH29RPN6_eIwZPbed2X2nLnV0t1GJL4cHOGuA84G4GkrehS49Du79Y_q8ZGyrfjH0zvrJb44oZZPMENfYxPm3u1ke2SZtzd41Nu8hnScsXAUg2orQbArDTSXyShzVAa1NVQjBSoY_tdV9-bUC6LNFfPlvxlJ-e29e4X1HLsIw0MPpEcgFLuHEE44txVinUtqlWFgp7z7Gqg8dcRvDnZHtH47uQnw0bsUU7dJ9gKak-wOWJrW-xrPo2LHf96ANFeQC1tG4KL9LemcgDMSWZDf90DnNFDIz-a8C46ZYiW-jxy4W7agC&key=AIzaSyBgqLtAje-cCxj_n-oFD1vsiNdRpNUfNuM" alt="Especialidades del mar">
-        <div class="gallery-item-overlay"><span>Marisco fresco</span></div>
-      </div>
-      <div class="gallery-item">
-        <img src="https://maps.googleapis.com/maps/api/place/photo?maxwidth=1200&photoreference=Ab43m-uQFWvaNpz27iADuLn_iXEzOWzU-_izhQ_GlIxCjr_A-83d0gLdn-21kGBEOw9714KYXwoX6l8NEByjmesMOFhY25LEllDsbKwh5zFegdW1aLCurpbZWK3wrfYM4qf4aAH5OfVPv9pdsP3L2PdqpJbNipC5YoOjv2blCBfU6bUDZq1sCJ4Kgijzg0f8vXRpHOBBzOVfWpy2Utgr7_wYCt8kOLKx6GJ0i32nuxyMyovdEoDg97_fwmgoolXuuOCAZzJ9p-DPoBD0aiP6HOsPuId6fWwPVox2wdC4lBMEzeofJByNZK3lCLKTDVbtIcuWkNbrLy5bMpVsTmtMJp9-UseTwmQQ1G-rpH3lDOKwYLeifH5jI8f2OW-zMjrNbJsDsWU0wzKBxVMjFNgUIvKIyYhtvTGdcW8kIBthL3WsnvxZGqQ&key=AIzaSyBgqLtAje-cCxj_n-oFD1vsiNdRpNUfNuM" alt="Platos de la carta">
-        <div class="gallery-item-overlay"><span>Cocina del mar</span></div>
-      </div>
-      <div class="gallery-item">
-        <img src="https://maps.googleapis.com/maps/api/place/photo?maxwidth=1200&photoreference=Ab43m-tvKZuaya8dNcXe_3jMvSmNR8f520rSVP1e9ZQcTw91nTHpnn4B1uHp0mWwXJLlVsibhb1kngmaHCpORAHSxmy5WSt_AvpBluZiy-LL-S74jz21It0uLPGboeYTRY68Z2z4SsYpvohoMVBYcgMm_rueA-YRuVXFtAj6CNpEWPPfK5saxUft-6CJW6h5kdo0_MpB7WTSaEWkyQJas7KU5De9R9wPSI5dGinTPl7KIcj4Qo6YAlTeINJy4Jia4DsU5nEinE-9pNf7p3_x7FQxis5IUuZ6qg2fLSRe391nKfuHp8egqhYt-I48E_1WVPpXxQ-1CZZmzAXZSilxn2PtT4ZML46VtZIWp0K1J-vrenG9OHrnAfCT5RYR1RtpAtxAyLNZ5ziMuiv8UvLp7oq-l2PmEVL9Yn3OpkpH_Vap3VkpelaVLcsZtJd3eZwEUNiT&key=AIzaSyBgqLtAje-cCxj_n-oFD1vsiNdRpNUfNuM" alt="Entorno natural">
-        <div class="gallery-item-overlay"><span>Port de Pollença</span></div>
-      </div>
-      <div class="gallery-item">
-        <img src="https://maps.googleapis.com/maps/api/place/photo?maxwidth=1200&photoreference=Ab43m-tth9T5aYMXBD0XHgmeaDicdaFK_vBjB61ovsaPaImykuvDIwOG-Vi4f1Hk5IsxBHvPPrOP0MGAAY_z4INE8FLKIFI-PEdj4Ojgp8fMkm-8a0_bvjsLu9BYJyM2yKrDCD7acva2vN_PFmbb6hVOFlc19u58IoB87MkoSBO8LLeS2WwyZR5dJfuBEYEql5dUldXoXq11LTCJsectfl_VIfaAOgd_mFb506MtUqBvZOuvvmaDl57ZppsGrlLmrl2u6A5H7jguZQMHp9kulXCDxaCpU-CgDF-quaufGSaV6059znn2tZHm67X6VXwhdhUuVsYY27vt09Fm4JPoBdHxRcANv6m00SJ2kdvg3fzHibOmRYl4-0ofSt9NyhJ6uymDlDH0tn45a10hHSm0wl3GfNkHt3vlA4z2FXV2oKCrbB8WTFrNglfENysC3i2GzsJ3&key=AIzaSyBgqLtAje-cCxj_n-oFD1vsiNdRpNUfNuM" alt="Terraza y playa">
-        <div class="gallery-item-overlay"><span>Junto a la playa</span></div>
-      </div>
-    </div>
+<!-- ESPECIALIDAD -->
+<div class="especialidad">
+  <div class="espec-bg"></div>
+  <div class="espec-overlay"></div>
+  <div class="espec-content reveal">
+    <p class="espec-tag">Nuestra especialidad</p>
+    <h2>El plato más celebrado de Tamarells</h2>
+    <p>Nuestra especialidad de la casa es el plato del que más se habla. Elaborado con mimo, ingredientes frescos de temporada y la tradición culinaria mediterránea que nos define, es la razón por la que muchos de nuestros clientes vuelven una y otra vez a nuestra mesa frente al mar.</p>
+    <a href="#menu" class="btn-light">Ver carta completa</a>
   </div>
-</section>
+</div>
 
-<!-- TESTIMONIALS -->
-<section id="testimonials">
-  <div class="container">
-    <div class="testimonials-header reveal">
-      <span class="section-label">Opiniones</span>
-      <h2 class="section-title">Lo que dicen nuestros clientes</h2>
-      <div class="section-line"></div>
+<!-- CARTA -->
+<section class="menu-section" id="menu">
+  <div class="menu-inner">
+    <p class="section-tag" style="text-align:center">Nuestra carta</p>
+    <h2 class="section-h2" style="text-align:center">Cocina mediterránea de mercado</h2>
+    <p class="section-sub" style="text-align:center">Producto fresco · Recetas de siempre · Sabor auténtico</p>
+    <div class="tabs">
+      <button class="tab-btn active" onclick="showTab('t1',this)">Especialidades</button>
+      <button class="tab-btn" onclick="showTab('t2',this)">Principales</button>
+      <button class="tab-btn" onclick="showTab('t3',this)">Postres</button>
     </div>
-    <div class="testimonials-grid">
-      <div class="testimonial-card reveal">
-        <div class="testimonial-tag">Google</div>
-        <div class="testimonial-stars">★★★★★</div>
-        <p class="testimonial-text">El sitio es precioso, está en la playa y con muy buen ambiente. El servicio es muy bueno y la comida inmejorable.</p>
-        <div class="testimonial-author">Cliente satisfecho</div>
+
+    <div id="tab-t1" class="tab-content active">
+      <div class="dish-card">
+        <div class="dish-header">
+          <span class="dish-name">Del día</span>
+          <span class="dish-price">12€</span>
+        </div>
+        <p class="dish-desc">Lo mejor de temporada seleccionado cada mañana</p>
       </div>
-      <div class="testimonial-card reveal" style="transition-delay:0.15s">
-        <div class="testimonial-tag">Google</div>
-        <div class="testimonial-stars">★★★★★</div>
-        <p class="testimonial-text">Un hermoso lugar con un servicio excelente. Para destacar la atención de todos los camareros.</p>
-        <div class="testimonial-author">Familia</div>
+      <div class="dish-card">
+        <div class="dish-header">
+          <span class="dish-name">Clásico</span>
+          <span class="dish-price">10€</span>
+        </div>
+        <p class="dish-desc">La receta de siempre que no decepciona</p>
       </div>
-      <div class="testimonial-card reveal" style="transition-delay:0.3s">
-        <div class="testimonial-tag">Google</div>
-        <div class="testimonial-stars">★★★★☆</div>
-        <p class="testimonial-text">Buscábamos un lindo lugar para comer frente al mar y encontramos exactamente lo que necesitábamos en Tamarells.</p>
-        <div class="testimonial-author">Visitante</div>
+      <div class="dish-card">
+        <div class="dish-header">
+          <span class="dish-name">Para compartir</span>
+          <span class="dish-price">9€</span>
+        </div>
+        <p class="dish-desc">Perfecto para empezar la experiencia</p>
+      </div>
+      <div class="dish-card">
+        <div class="dish-header">
+          <span class="dish-name">Temporada</span>
+          <span class="dish-price">11€</span>
+        </div>
+        <p class="dish-desc">Lo más fresco del mercado de esta semana</p>
+      </div>
+      <div class="dish-card">
+        <div class="dish-header">
+          <span class="dish-name">Casero</span>
+          <span class="dish-price">10€</span>
+        </div>
+        <p class="dish-desc">Receta tradicional de generación en generación</p>
+      </div>
+      <div class="dish-card">
+        <div class="dish-header">
+          <span class="dish-name">Del chef</span>
+          <span class="dish-price">13€</span>
+        </div>
+        <p class="dish-desc">Creación especial del día, pregunta disponibilidad</p>
       </div>
     </div>
-  </div>
-</section>
 
-<!-- CONTACT -->
-<section id="contact">
-  <div class="container">
-    <div class="contact-grid">
-      <div class="contact-info reveal-left">
-        <span class="section-label">Contacto</span>
-        <h2 class="section-title">Ven a visitarnos</h2>
-        <div class="section-line"></div>
-        <p>Estamos en el corazón de Port de Pollença, junto al paseo marítimo y con vistas al mar. Te esperamos todos los días.</p>
-
-        <div class="contact-block">
-          <div class="contact-block-title">Información</div>
-          <div class="contact-item">
-            <span class="contact-item-icon">📍</span>
-            <span>Passeig de Londres, s/n, 07470 Port de Pollença, Illes Balears, España</span>
-          </div>
-          <div class="contact-item">
-            <span class="contact-item-icon">📞</span>
-            <span><a href="tel:+34971865049">971 86 50 49</a></span>
-          </div>
-          <div class="contact-item">
-            <span class="contact-item-icon">🕐</span>
-            <span>Abierto todos los días: 10:30 – 19:00</span>
-          </div>
+    <div id="tab-t2" class="tab-content">
+      <div class="dish-card">
+        <div class="dish-header">
+          <span class="dish-name">Principal</span>
+          <span class="dish-price">15€</span>
         </div>
-
-        <div class="contact-block">
-          <div class="contact-block-title">Horario Semanal</div>
-          <div class="hours-grid">
-            <div class="hour-item"><span>Lunes</span><span>10:30–19:00</span></div>
-            <div class="hour-item"><span>Martes</span><span>10:30–19:00</span></div>
-            <div class="hour-item"><span>Miércoles</span><span>10:30–19:00</span></div>
-            <div class="hour-item"><span>Jueves</span><span>10:30–19:00</span></div>
-            <div class="hour-item"><span>Viernes</span><span>10:30–19:00</span></div>
-            <div class="hour-item"><span>Sábado</span><span>10:30–19:00</span></div>
-            <div class="hour-item"><span>Domingo</span><span>10:30–19:00</span></div>
-          </div>
-        </div>
-
-        <a href="https://wa.me/34971865049" target="_blank" rel="noopener" class="whatsapp-cta">
-          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-          Contactar por WhatsApp
-        </a>
+        <p class="dish-desc">Elaborado con mimo y productos locales</p>
       </div>
+      <div class="dish-card">
+        <div class="dish-header">
+          <span class="dish-name">Del mercado</span>
+          <span class="dish-price">14€</span>
+        </div>
+        <p class="dish-desc">Seleccionado esa mañana en el mercado</p>
+      </div>
+      <div class="dish-card">
+        <div class="dish-header">
+          <span class="dish-name">Favorito</span>
+          <span class="dish-price">13€</span>
+        </div>
+        <p class="dish-desc">El más pedido por nuestros clientes</p>
+      </div>
+      <div class="dish-card">
+        <div class="dish-header">
+          <span class="dish-name">Especial</span>
+          <span class="dish-price">16€</span>
+        </div>
+        <p class="dish-desc">Una propuesta diferente que sorprende al paladar</p>
+      </div>
+      <div class="dish-card">
+        <div class="dish-header">
+          <span class="dish-name">De siempre</span>
+          <span class="dish-price">14€</span>
+        </div>
+        <p class="dish-desc">La receta clásica que siempre satisface</p>
+      </div>
+      <div class="dish-card">
+        <div class="dish-header">
+          <span class="dish-name">Sorpresa</span>
+          <span class="dish-price">15€</span>
+        </div>
+        <p class="dish-desc">El plato favorito de los habituales de la casa</p>
+      </div>
+    </div>
 
-      <div class="contact-map reveal-right">
-        <iframe
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.!2d3.0868!3d39.9025!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x129793b5c9f9c9c9%3A0x0!2sPasseig+de+Londres%2C+s%2Fn%2C+07470+Port+de+Pollen%C3%A7a%2C+Illes+Balears!5e0!3m2!1ses!2ses!4v1700000000000"
-          allowfullscreen=""
-          loading="lazy"
-          referrerpolicy="no-referrer-when-downgrade"
-          title="Ubicación de Tamarells en Port de Pollença">
-        </iframe>
+    <div id="tab-t3" class="tab-content">
+      <div class="dish-card">
+        <div class="dish-header">
+          <span class="dish-name">Casero</span>
+          <span class="dish-price">5€</span>
+        </div>
+        <p class="dish-desc">Hecho en casa con ingredientes naturales</p>
+      </div>
+      <div class="dish-card">
+        <div class="dish-header">
+          <span class="dish-name">Temporada</span>
+          <span class="dish-price">5€</span>
+        </div>
+        <p class="dish-desc">Fresco y natural de temporada</p>
+      </div>
+      <div class="dish-card">
+        <div class="dish-header">
+          <span class="dish-name">Especial</span>
+          <span class="dish-price">6€</span>
+        </div>
+        <p class="dish-desc">La joya dulce del día</p>
+      </div>
+      <div class="dish-card">
+        <div class="dish-header">
+          <span class="dish-name">Tartaleta</span>
+          <span class="dish-price">5€</span>
+        </div>
+        <p class="dish-desc">Fruta de temporada sobre crema pastelera artesana</p>
+      </div>
+      <div class="dish-card">
+        <div class="dish-header">
+          <span class="dish-name">Coulant</span>
+          <span class="dish-price">6€</span>
+        </div>
+        <p class="dish-desc">Chocolate con corazón líquido y helado de vainilla</p>
+      </div>
+      <div class="dish-card">
+        <div class="dish-header">
+          <span class="dish-name">Helado artesanal</span>
+          <span class="dish-price">4€</span>
+        </div>
+        <p class="dish-desc">Tres sabores elaborados en obrador propio</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- FOOTER -->
-<footer>
-  <div class="container">
-    <div class="footer-content">
-      <div class="footer-brand">
-        <div class="nav-logo">Tama<span>rells</span></div>
-        <p>Marisquería junto a la playa en el corazón de Port de Pollença. Playa, sabor y atmósfera perfecta para disfrutar del Mediterráneo.</p>
+<!-- POR QUÉ ELEGIRNOS -->
+<section class="why">
+  <p class="section-tag" style="text-align:center">Nuestros valores</p>
+  <h2 class="section-h2" style="text-align:center">¿Por qué elegirnos?</h2>
+  <p class="section-sub" style="text-align:center">Lo que nos hace diferentes</p>
+  <div class="why-grid">
+    <div class="why-card reveal">
+      <div class="why-icon">
+        <svg viewBox="0 0 52 52" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="26" cy="22" r="10"/>
+          <path d="M26 12 C26 12 20 6 14 10"/>
+          <path d="M26 12 C26 12 32 6 38 10"/>
+          <path d="M10 38 Q26 46 42 38"/>
+        </svg>
       </div>
-      <div class="footer-col">
-        <h4>Navegación</h4>
-        <ul>
-          <li><a href="#about">Nosotros</a></li>
-          <li><a href="#menu">Carta</a></li>
-          <li><a href="#gallery">Galería</a></li>
-          <li><a href="#testimonials">Opiniones</a></li>
-          <li><a href="#contact">Contacto</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h4>Contacto</h4>
-        <ul>
-          <li><a href="tel:+34971865049">971 86 50 49</a></li>
-          <li><a href="https://wa.me/34971865049" target="_blank" rel="noopener">WhatsApp</a></li>
-          <li><a href="#contact">Cómo llegar</a></li>
-          <li><a href="#contact">Horarios</a></li>
-        </ul>
-      </div>
+      <h3>Producto fresco cada día</h3>
+      <p>Trabajamos con proveedores locales de Pollença y Mallorca para garantizar la máxima frescura en cada plato. Seleccionamos los ingredientes cada mañana, respetando la estacionalidad y el sabor auténtico de la tierra.</p>
     </div>
-    <div class="footer-bottom">
-      <p>© 2025 Tamarells · Passeig de Londres, s/n, Port de Pollença · Todos los derechos reservados</p>
-      <p>Sitio web por <a href="https://homewebsite.es" target="_blank" rel="noopener">homewebsite.es</a></p>
-    </div>
-  </div>
-</footer>
-
-<!-- FLOATING WHATSAPP -->
-<a href="https://wa.me/34971865049" target="_blank" rel="noopener" class="fab-whatsapp" aria-label="Contactar por WhatsApp">
-  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-</a>
-
-<script>
-(function(){
-  'use strict';
-
-  // Safety timeout - force show all elements after 5s
+    <div class="why-card reveal">
+      <div class="why-icon">
+        <svg viewBox="0 0 52 52" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M26 8 L30 18 L41
